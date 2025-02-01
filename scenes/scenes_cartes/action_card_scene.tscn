@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://w2rqhso1f0cu"]
+
+[ext_resource type="Script" path="res://scripts/script_scenes_cartes/ActionCard.gd" id="1_5qi8f"]
+
+[node name="ActionCardScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5qi8f")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EffectLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
