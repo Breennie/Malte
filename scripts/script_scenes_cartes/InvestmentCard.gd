@@ -1,17 +1,23 @@
 extends Control
+class_name InvestmentCard
 
-@onready var texture_rect = $TextureRect
 @onready var cost_label = $CostLabel
-@onready var investors_label = $InvestorsLabel
 @onready var risk_label = $RiskLabel
 @onready var gain_label = $GainLabel
+@onready var texture_rect = $TextureRect
 
-func setup(card: InvestmentCardResource):
-	# Afficher l'image de la carte
-	texture_rect.texture = card.texture
+func setup(card_data: CardResource):
+	print("InvestmentCard setup called")
+	print("cost_label: ", cost_label)
+	print("risk_label: ", risk_label)
+	print("gain_label: ", gain_label)
+	print("texture_rect: ", texture_rect)
 
-	# Afficher les valeurs dynamiques
-	cost_label.text = "Coût : %d$" % card.cost
-	investors_label.text = "Investisseurs requis : %d" % card.required_investors
-	risk_label.text = "Risque : %d/5" % card.risk
-	gain_label.text = "Gain max : %d$" % card.max_potential_gain
+	if card_data is InvestmentCardResource:
+		var investment_card_data: InvestmentCardResource = card_data as InvestmentCardResource
+		texture_rect.texture = card_data.texture
+		cost_label.text = str(investment_card_data.cost)
+		risk_label.text = str(investment_card_data.risk)
+		gain_label.text = str(investment_card_data.max_potential_gain)
+	else:
+		printerr("Error: Expected InvestmentCardResource, got ", card_data.get_class())
